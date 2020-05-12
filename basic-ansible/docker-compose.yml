@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  rundeck:
+    build:
+      context: rundeck/
+    tty: true
+    volumes:
+      - data:/home/rundeck/server/data
+      - ${RUNDECK_LICENSE_FILE:-/dev/null}:/home/rundeck/etc/rundeckpro-license.key
+    ports:
+      - 4440:4440
+    depends_on:
+      - target
+
+  target:
+    build:
+      context: target
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /sbin/init
+
+networks:
+  default:
+
+volumes:
+  data:

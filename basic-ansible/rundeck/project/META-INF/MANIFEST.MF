@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Rundeck-Archive-Project-Name: ansible-examples
+Rundeck-Archive-Format-Version: 1.0
+Rundeck-Application-Version: 3.2.7-rc1-20200511

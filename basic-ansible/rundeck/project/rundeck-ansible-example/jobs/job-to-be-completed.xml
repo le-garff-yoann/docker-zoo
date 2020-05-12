@@ -1,0 +1,24 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <loglevel>INFO</loglevel>
+    <name>to-be-completed</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <plugins />
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <node-step-plugin type='com.batix.rundeck.plugins.AnsiblePlaybookInlineWorkflowNodeStep'>
+          <configuration>
+            <entry key='ansible-become' value='false' />
+            <entry key='ansible-playbook-inline' value='---&#10;' />
+            <entry key='ansible-ssh-passphrase-option' value='option.password' />
+            <entry key='ansible-ssh-use-agent' value='false' />
+          </configuration>
+        </node-step-plugin>
+      </command>
+    </sequence>
+  </job>
+</joblist>
